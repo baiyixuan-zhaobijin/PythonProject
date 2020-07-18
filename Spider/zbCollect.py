@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 from peewee import *
 import datetime
 import time
-
+import arrow
 db = MySQLDatabase("test", host="127.0.0.1", port=3306, user="root", passwd="123456")
 db.connect()
 
@@ -20,7 +20,7 @@ class project_data(BaseModel):
     title = CharField()
     listUrl = CharField()
     dataTitle = CharField()
-    dataDay = CharField()
+    dataDay = DateTimeField()
     dataCategory = CharField()
     dataType = CharField()
     dataArea = CharField()
@@ -46,6 +46,10 @@ def getContent(url):
         return html[0]
     else:
         return '';
+#删除数据
+yesterday = arrow.utcnow().shift(days=-1).format('YYYY-MM-DD')
+project_data.delete().where(project_data.dataDay<yesterday).execute()
+
 urlList = []
 for url in project_data.select(project_data.detailUrl):
     urlList.append(url.detailUrl)

@@ -55,7 +55,7 @@ for url in project_data.select(project_data.detailUrl):
     urlList.append(url.detailUrl)
 
 for i in range(1,6):
-    url =  'https://www.zbytb.com/zb-'+str(i)+'.html'
+    url =  'https://www.zbytb.com/zb-{0}.html'.format(str(i))
     r = requests.get(url)
 
     soup = BeautifulSoup(r.text, 'lxml') #lxml为解析器

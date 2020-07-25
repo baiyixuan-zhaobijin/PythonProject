@@ -86,7 +86,7 @@ for n in range(1,6):
             project_data.insert(
                         companyId = 2,
                         projectId = 2,
-                        projectRuleId = 4,
+                        projectRuleId = 5,
                         title = '全国公共资源交易平台',
                         listUrl = url,
                         dataTitle = item['title'].strip(),

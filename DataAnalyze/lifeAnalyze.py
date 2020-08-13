@@ -26,6 +26,7 @@ if(type == '2'):
         plt.text(y + 0.2, x - 0.1, '%s' % y)
 elif(type == '1'):
     plt.pie(y_data,labels=x_data,autopct='%1.1f%%',shadow=False,startangle=150)
+    plt.legend(loc="upper right",fontsize=10,bbox_to_anchor=(1.3,1.15),borderaxespad=0.3)
 elif(type == '3'):
    common.autolabel(plt.bar(range(len(y_data)), y_data, color='rgb', tick_label=x_data))
 plt.show() 
